@@ -5,11 +5,12 @@ import pytest
 from allure_commons.types import AttachmentType
 
 from Pages.loginPage import LoginPage
+from Pages.productPage import ProductPage
 from Utils.readProperties import ReadConfig
 
 
 class Test_001_Login:
-    sauceDemoURL = ReadConfig().getbaseUrl()
+    baseURL = ReadConfig().getbaseUrl()
     username = ReadConfig().getUsername()
     password = ReadConfig().getPasswo2rd()
 
@@ -18,9 +19,10 @@ class Test_001_Login:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_loginTests(self, setup):
         self.driver = setup
-        self.driver.get(self.sauceDemoURL)
+        self.driver.get(self.baseURL)
         self.driver.maximize_window()
         self.lp = LoginPage(self.driver)
+        self.productpage = ProductPage(self.driver)
 
         self.lp.clickMainLoginButton()
         self.lp.enterUsername(self.username)
@@ -28,6 +30,10 @@ class Test_001_Login:
         allure.attach(self.driver.get_screenshot_as_png(), name="Login page", attachment_type=AttachmentType.PNG)
         self.lp.clickLoginButton()
         allure.attach(self.driver.get_screenshot_as_png(), name="Product page", attachment_type=AttachmentType.PNG)
+        self.productpage.selectSamsungGalaxyX6()
+        allure.attach(self.driver.get_screenshot_as_png(), name="Add To Cart page", attachment_type=AttachmentType.PNG)
+
+
 
 
         self.driver.quit()
