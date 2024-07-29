@@ -7,7 +7,7 @@ class LoginPage:
     button_MainLogin_id = 'login2'
     textbox_username_id = 'loginusername'
     textbox_password_id = 'loginpassword'
-    button_loginButton_xpath = "//button[@type='button'][contains(.,'Log in')]"
+    button_loginButton_xpath = "//button[contains(.,'Log in')]"
 
 
     def __init__(self, driver):
