@@ -1,0 +1,1 @@
+python -m pytest -s -v -m"regression" --alluredir="allure-results" --browser firefox

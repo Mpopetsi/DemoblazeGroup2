@@ -4,7 +4,7 @@ config = configparser.RawConfigParser()
 config.read("./Configurations/loginDetails.ini")
 
 
-class ReadConfig():
+class ReadConfig:
     def getbaseUrl(self):
         # sauceDemoURL = config.get('URLs', 'sauceDemoURL')
         # return sauceDemoURL

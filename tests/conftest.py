@@ -1,9 +1,5 @@
 import pytest
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriver
-from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
-
 
 @pytest.fixture()
 def setup(browser):
@@ -13,7 +9,6 @@ def setup(browser):
         driver = webdriver.Firefox()
     else:
         driver = webdriver.Edge()
-
     return driver
 
 
@@ -24,7 +19,6 @@ def pytest_addoption(parser):
 @pytest.fixture()
 def browser(request):
     return request.config.getoption("--browser")
-
 
 
 @pytest.fixture()
