@@ -29,9 +29,16 @@ class Test_001_Login:
         self.lp.enterPassword(self.password)
         allure.attach(self.driver.get_screenshot_as_png(), name="Login page", attachment_type=AttachmentType.PNG)
         self.lp.clickLoginButton()
+        self.productpage.verifyLoginSuccess()
+        # ToDo implemente the verifcation of home page
         allure.attach(self.driver.get_screenshot_as_png(), name="Product page", attachment_type=AttachmentType.PNG)
-        self.productpage.selectSamsungGalaxyX6()
-        allure.attach(self.driver.get_screenshot_as_png(), name="Add To Cart page", attachment_type=AttachmentType.PNG)
+        # self.productpage.selectSamsungGalaxyX6()
+        # allure.attach(self.driver.get_screenshot_as_png(), name="Add To Cart page", attachment_type=AttachmentType.PNG)
+        # self.productpage.clickAddToCart()
+        # self.productpage.acceptAlert()
+        # self.productpage.clickCart()
+        # allure.attach(self.driver.get_screenshot_as_png(), name="Cart", attachment_type=AttachmentType.PNG)
+
 
 
 
