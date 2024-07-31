@@ -28,13 +28,29 @@ class Test_001_Login:
         self.lp.enterUsername(self.username)
         self.lp.enterPassword(self.password)
         self.lp.clickLoginButton()
-        allure.attach(self.driver.get_screenshot_as_png(), name="Login page", attachment_type=AttachmentType.PNG)
+        allure.attach(self.driver.get_screenshot_as_png(), name="Login page",
+                      attachment_type=AttachmentType.PNG)
         self.prod.select_device("Samsung galaxy s6")
-        allure.attach(self.driver.get_screenshot_as_png(), name="Cart page", attachment_type=AttachmentType.PNG)
+        allure.attach(self.driver.get_screenshot_as_png(), name="Cart page",
+                      attachment_type=AttachmentType.PNG)
         self.cart.add_to_cart()
-        allure.attach(self.driver.get_screenshot_as_png(), name="Shipping page", attachment_type=AttachmentType.PNG)
+        allure.attach(self.driver.get_screenshot_as_png(), name="Shipping page",
+                      attachment_type=AttachmentType.PNG)
         self.cart.click_add_to_cart_btn()
         self.cart.verify_device_added()
-        allure.attach(self.driver.get_screenshot_as_png(), name="Alert", attachment_type=AttachmentType.PNG)
         self.cart.accept_device_added_to_cart_alert()
-        #self.driver.quit()
+        self.cart.go_to_cart_page()
+        allure.attach(self.driver.get_screenshot_as_png(), name="Cart Items page",
+                      attachment_type=AttachmentType.PNG)
+        self.cart.get_cart_items()
+        self.cart.click_place_order_btn()
+        allure.attach(self.driver.get_screenshot_as_png(),
+                      name="Order Placed Confirmation", attachment_type=AttachmentType.PNG)
+        self.cart.populate_shipping_details()
+        allure.attach(self.driver.get_screenshot_as_png(),
+                      name="Populate Shipping Info", attachment_type=AttachmentType.PNG)
+        self.cart.click_purchase_btn()
+        allure.attach(self.driver.get_screenshot_as_png(),
+                      name="Order Confirmation", attachment_type=AttachmentType.PNG)
+        self.cart.get_product_id()
+        self.driver.quit()

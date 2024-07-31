@@ -35,14 +35,20 @@ Return the purchase ID
 
 class ProductPage:
     __product_link = "//a[contains(.,'Samsung galaxy s6')]"
+    __time_out = 30
+    __logged_in_user_xpath = "//a[contains(.,'Welcome admin')]"
 
     def __init__(self, driver):
         self.driver = driver
 
     def select_device(self, device):
         try:
-            link = WebDriverWait(self.driver, 30).until(
-                EC.visibility_of_element_located((By.XPATH, self.__product_link)))
-            self.driver.get(link.get_attribute('href'))
+            logged_in_user = WebDriverWait(self.driver, self.__time_out).until(
+                EC.visibility_of_element_located((By.XPATH, self.__logged_in_user_xpath))).text
+
+            if logged_in_user.__eq__('Welcome admin'):
+                link = WebDriverWait(self.driver, self.__time_out).until(
+                    EC.visibility_of_element_located((By.XPATH, self.__product_link)))
+                self.driver.get(link.get_attribute('href'))
         except Exception as e:
             print(f'An error occurred: {e}')

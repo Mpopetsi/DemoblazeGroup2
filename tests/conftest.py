@@ -9,6 +9,7 @@ def setup(browser):
         driver = webdriver.Firefox()
     else:
         driver = webdriver.Edge()
+
     return driver
 
 
