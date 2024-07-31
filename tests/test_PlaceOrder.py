@@ -3,6 +3,7 @@ import time
 import allure
 import pytest
 from allure_commons.types import AttachmentType
+from faker import Faker
 
 from Pages.loginPage import LoginPage
 from Pages.productPage import ProductPage
@@ -13,6 +14,9 @@ class Test_001_Login:
     baseURL = ReadConfig().getbaseUrl()
     username = ReadConfig().getUsername()
     password = ReadConfig().getPasswo2rd()
+
+    faker = Faker()
+    Faker_Username = faker.first_name()
 
     @pytest.mark.regression
     @pytest.mark.nkosi
@@ -27,6 +31,7 @@ class Test_001_Login:
         self.lp.clickMainLoginButton()
         self.lp.enterUsername(self.username)
         self.lp.enterPassword(self.password)
+        time.sleep(5)
         allure.attach(self.driver.get_screenshot_as_png(), name="Login page", attachment_type=AttachmentType.PNG)
         self.lp.clickLoginButton()
         self.productpage.verifyLoginSuccess()
@@ -38,9 +43,6 @@ class Test_001_Login:
         self.productpage.acceptAlert()
         self.productpage.clickCart()
         allure.attach(self.driver.get_screenshot_as_png(), name="Cart", attachment_type=AttachmentType.PNG)
-
-
-
-
+        time.sleep(5)
 
         self.driver.quit()
