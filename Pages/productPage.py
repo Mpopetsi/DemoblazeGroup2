@@ -20,31 +20,31 @@ class ProductPage:
         element = wait.until(EC.element_to_be_clickable((By.XPATH, self.Logout_xpath)))
         element.is_displayed()
 
-    # def selectSamsungGalaxyX6(self):
-    #     time.sleep(5)
-    #     wait = WebDriverWait(self.driver, 15)
-    #     element = wait.until(EC.element_to_be_clickable((By.XPATH, self.SamsungGalaxyX6_xpath)))
-    #     element.click()
-    #
-    #
-    #
-    # def clickAddToCart(self):
-    #     time.sleep(5)
-    #     wait = WebDriverWait(self.driver, 15)
-    #     element = wait.until(EC.element_to_be_clickable((By.XPATH, self.addToCart_xpath)))
-    #     element.click()
-    #
-    # def acceptAlert(self):
-    #     try:
-    #         WebDriverWait(self.driver, 10).until(EC.alert_is_present())
-    #         alert = self.driver.switch_to.alert
-    #         alert.accept()
-    #     except NoAlertPresentException:
-    #         print("No alert is present")
-    #
-    # def clickCart(self):
-    #     time.sleep(5)
-    #     wait = WebDriverWait(self.driver, 15)
-    #     element = wait.until(EC.element_to_be_clickable((By.XPATH, self.Cart_xpath)))
-    #     element.click()
-    #     time.sleep(5)
+    def selectSamsungGalaxyX6(self):
+        time.sleep(5)
+        wait = WebDriverWait(self.driver, 15)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.SamsungGalaxyX6_xpath)))
+        element.click()
+
+
+
+    def clickAddToCart(self):
+        time.sleep(5)
+        wait = WebDriverWait(self.driver, 15)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.addToCart_xpath)))
+        element.click()
+
+    def acceptAlert(self):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+            alert = self.driver.switch_to.alert
+            alert.accept()
+        except NoAlertPresentException:
+            print("No alert is present")
+
+    def clickCart(self):
+        time.sleep(5)
+        wait = WebDriverWait(self.driver, 15)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.Cart_xpath)))
+        element.click()
+        time.sleep(5)
